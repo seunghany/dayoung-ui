@@ -1,6 +1,6 @@
 import React from 'react'
 
 const Home = () => <>
-Home
+home Hello World
 </>
 export default Home
