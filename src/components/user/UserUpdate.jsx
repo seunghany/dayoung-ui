@@ -1,6 +1,6 @@
 import React from 'react'
 
 const UserUpdate = () =>
-<> UserUpdate </>
+<>UserUpdate</>
 
 export default UserUpdate
