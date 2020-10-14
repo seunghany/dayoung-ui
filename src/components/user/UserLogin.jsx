@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 // CRUD 에서 Read!
 // The <tr> tag defines a row in an HTML table.
@@ -6,34 +6,34 @@ import { Link } from 'react-router-dom'
 const UserLogin = () => {
 // 여기 안에다 코딩을 해야, 값을 출력 후 지우기 때문에, 
 // memory 를 차지 하지 않는다.
+    const [userId, setUserId] = useState() 
+    const login = (e) => {
+        alert(`로그인 버튼 클리! ${userId}`)
+    }
+    const cancel = () =>{
+        alert(`캔슬 버튼 클리! {login}`)
+    }
+    // 밑이랑 분리함
+    return (<> 
+    <h1>로그인</h1>
+    <table>
+        <tr>
+            <td>ID :</td>
+            <td> <input type="text" onChange={e => {setUserId(`${e.target.value}`)}}/> </td>
+            
+        </tr>
+        <tr>
+        <td>Password: </td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td colSpan='2'>
+                <input type="button" value='Login' onClick={login}/>
+                <input type="button" value='Cancel' onClick={cancel}/>
+            </td>
 
-const login = () => {
-    alert('로그인')
-}
-const cancel = () =>{
-    alert('캔슬')
-}
-// 밑이랑 분리함
-return (<> 
-<h1>로그인</h1>
-<table>
-    <tr>
-        <td>ID :</td>
-        <td> <input type='text'/></td>
-        
-    </tr>
-    <tr>
-    <td>Password: </td>
-        <td><input type="text"/></td>
-    </tr>
-    <tr>
-        <td colSpan='2'>
-            <input type="button" value='Login' onClick={login}/>
-            <input type="button" value='Cancel' onClick={cancel}/>
-        </td>
-
-    </tr>
-</table>
+        </tr>
+    </table>
 </>)
 }
 
