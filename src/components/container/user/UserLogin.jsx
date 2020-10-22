@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import {User} from '../../../template'
 
 // 여기가 다른 곳의 home 느낌 일단 여기로 오자
 // import { Link } from 'react-router-dom'
@@ -35,7 +36,7 @@ const UserLogin = e => {
     return (<> 
     <h1>로그인</h1>
     <ol>
-        <li><Link to='/'></Link>UserLogin</li>
+        <li><Link to='/userlogin'></Link>UserLogin</li>
         <li><Link to='/userregister'>UserRegister</Link></li>
         <li><Link to='/userremove'>UserRemove</Link></li>
         <li><Link to='/userupdate'>UserUpdate</Link></li>
