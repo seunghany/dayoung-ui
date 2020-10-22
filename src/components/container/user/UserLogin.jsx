@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import {User} from '../../../template'
 
 // 여기가 다른 곳의 home 느낌 일단 여기로 오자
@@ -33,14 +32,16 @@ const UserLogin = e => {
         alert(`캔슬 버튼 클리! ${userPassword}`)
     }
     // 밑이랑 분리함
+    // 여기가 화면 시작
     return (<> 
     <h1>로그인</h1>
-    <ol>
+    <User/>
+    {/* <ol>
         <li><Link to='/userlogin'></Link>UserLogin</li>
         <li><Link to='/userregister'>UserRegister</Link></li>
         <li><Link to='/userremove'>UserRemove</Link></li>
         <li><Link to='/userupdate'>UserUpdate</Link></li>
-    </ol>
+    </ol> */}
     <table>
         <tr>
             <td>ID :</td>

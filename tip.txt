@@ -1,0 +1,25 @@
+when you add new element
+
+I am going to use actorQuiz.jsx as an example
+step 1. Create ActorQuiz.jsx file insdie actor folder
+    - import React from 'react'
+    - const ActorQuiz () => <></>
+    - export default ActorQuiz
+step 2. Go to index.js inside actor folder
+    - create export {default as ActorQuiz} from './ActorQuiz'
+
+step 3. Go to menu.jsx inside components folder
+    - create element 
+    - <li><Link to = '/actorquiz'>Actor Quiz</Link></li>
+    - if there's no Menu create menu and then create element
+
+step 4. Go to App.js
+    - import ActorQuiz
+    - import {ActorHome, ActorQuiz} from './components/container/actor'
+
+    - path 설정
+    - <Route path ='/actorquiz' component={ActorQuiz}/>
+
+step 5. Go back to ActorQuiz.jsx created in step1
+    - import {Actor} from '../../../template'
+    - 

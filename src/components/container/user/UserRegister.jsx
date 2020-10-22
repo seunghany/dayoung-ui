@@ -24,8 +24,9 @@ const UserRegister = () => {
         )
     }
 
-    return (<User>
-        <h1>UserRegister</h1>
+    return (<>
+        <h1>회원가입</h1>
+        <User/>
         <form>
             <table>
                 <tr>
@@ -58,7 +59,8 @@ const UserRegister = () => {
                 </tr>
             </table>
         </form>
-    </User>)
+    
+    </>)
 }
 
 export default UserRegister
