@@ -31,11 +31,12 @@ const UserRegister = () => {
             <table>
                 <tr>
                     <td>ID</td>
-                    <td><intput type="text" onChange={e => setUserid(e.target.value)} /></td>
+                    <td><input types="text" onChange={e => setUserid(e.target.value)} /></td>
+                    
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input types="text" onchange={e=> setPassword(e.target.value)} /></td>
+                    <td><input types="text" onChange={e=> setPassword(e.target.value)} /></td>
                 </tr>
                 <tr>
                     <td>Name</td>

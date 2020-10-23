@@ -1,14 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Nav } from './components'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { Home, Item, User, Actor } from './template'
 import {UserLogin, UserRegister, UserRemove, UserUpdate} from './components/container/user'
 import {ActorHome, ActorQuiz} from './components/container/actor'
 
-const App = () => <>
-
+export default function App(){
+  const [loggedIn, setLoggedIn] = useState(sessionStorage.getItem('sessionUser'))
+  return (<>
   <Router>
-    <Nav/>
+    <Nav isAuth = {loggedIn}/>
     <Switch>
       <Route exact path='/'component= {Home}/>
       <Route path='/user'component= {User}/>
@@ -25,6 +26,4 @@ const App = () => <>
 
   </Router>
 
-</>
-
-export default App
+</>)}

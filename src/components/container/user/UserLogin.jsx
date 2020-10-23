@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {User} from '../../../template'
+import { Link, useHistory } from "react-router-dom";
 
 // 여기가 다른 곳의 home 느낌 일단 여기로 오자
 // import { Link } from 'react-router-dom'
@@ -12,20 +13,24 @@ const UserLogin = e => {
     // memory 를 차지 하지 않는다.
     const [userid, setUserid] = useState() 
     const [userPassword, setUserPassword] = useState()
-    const login = (e) => {
+    const history = useHistory();
+    
+    const login = e => {
         e.preventDefault()
-        alert(`로그인 버튼 클리! 아이디: ${userid} 패스워드 : ${userPassword}` )
-        axios.post(``, {userid, userPassword})
-             .then(res => {
-                 alert('Sucess !')
-             })
-             .catch(error => {
-                 alert('Fail')
-             })
-        // post 는 암호화 되서 보냄
-        // get 은 다 볼 수 있음
-        // then() 성공 했을 경우
-        // catch() 실패 했을 경우
+        axios.post(`http://localhost:8080/api/access`, {userid, userPassword})
+            .then(res => {
+                alert(`Welcome ! ${res.data["name"]}.  ${res.data["userid"]}'s connection is successful. ! `)
+
+                sessionStorage.setItem("sessionUser", res.data['userid']);
+                window.location.reload()
+                history.push("/home");
+                
+            })
+            .catch(error => {
+                alert("Please check your ID or password.");
+                window.location.reload();
+            })
+
     }
     const cancel = () => {
         e.preventDefault()
