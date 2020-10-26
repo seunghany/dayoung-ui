@@ -16,13 +16,14 @@ export const ActorMenu = () => <nav>
     <ol>
         <li><Link to = '/actorhome'>Actor Home</Link></li>
         <li><Link to = '/actorquiz'>Actor Quiz</Link></li>
+        <li><Link to = '/actorlist'>Actor List</Link></li>
     </ol>
 
 </nav>
 
 export const AuthMenu = () => (<nav>
     <ol>
-        <li><Link to='/signup-form'>Siginup Form</Link></li>
-        <li><Link to='/signin-form'>Signin Form</Link></li>
+        <li><Link to='/userlogin'>Siginup Form</Link></li>
+        <li><Link to='/userregister'>Signin Form</Link></li>
     </ol>
 </nav>)

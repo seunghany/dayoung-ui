@@ -19,13 +19,11 @@ const Nav = props => {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/user'>User</Link></li>
             <li><Link to='/actor'>Actor</Link></li>
-            <li><Link to='/item'>Item</Link></li> 
             <li onClick={logout} style={{textDecoration:'underline'}}>Logout</li>
         </ul>:
         <ul>
-            <li><Link to='/actor'>Actor</Link></li>
-            <li><Link to='/signup-form'>Register</Link></li>
-            <li><Link to='/signin-form'>Login</Link></li>
+            <li><Link to='/userregister'>Register</Link></li>
+            <li><Link to='/userlogin'>Login</Link></li>
             <li><Link to='/'>Cancel</Link></li>
         </ul>
         }
