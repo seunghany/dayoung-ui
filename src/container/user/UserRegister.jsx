@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {User} from '../../../template'
+import {User} from '../../template'
 import React, {useState} from 'react'
 
 const UserRegister = () => {
@@ -26,7 +26,7 @@ const UserRegister = () => {
 
     return (<>
         <h1>회원가입</h1>
-        <User/>
+        {/* <User/> */}
         <form>
             <table>
                 <tr>

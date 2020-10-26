@@ -1,5 +1,5 @@
 import React from 'react'
-import {Actor} from '../../../template'
+import {Actor} from '../../template'
 
 const ActorQuiz = () => {
     return(<>

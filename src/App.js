@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import { Nav } from './components'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import { Home, Item, User, Actor } from './template'
-import {UserLogin, UserRegister, UserRemove, UserUpdate} from './components/container/user'
-import {ActorHome, ActorQuiz} from './components/container/actor'
+import { Home, User, Actor } from './template'
+import {UserLogin, UserRegister, UserRemove, UserUpdate, UserList} from './container/user'
+import {ActorHome, ActorQuiz} from './container/actor'
 
 export default function App(){
   const [loggedIn, setLoggedIn] = useState(sessionStorage.getItem('sessionUser'))
@@ -13,10 +13,12 @@ export default function App(){
     <Switch>
       <Route exact path='/'component= {Home}/>
       <Route path='/user'component= {User}/>
-      <Route path='/item'component= {Item}/>
       <Route path='/actor'component= {Actor}/>
-      <Route path ='/userlogin' component={UserLogin}/>
-      <Route path ='/userregister' component={UserRegister}/>
+      {/* <Route path ='/signin-form' component={UserLogin}/> */}
+      <Route path='/signin-form' component={UserLogin}/>
+      <Route path='/signup-form' component={UserRegister}/>
+      {/* <Route path ='/userregister' component={UserRegister}/> */}
+      <Route path='/userlist' component={UserList}/>
       <Route path ='/userremove' component={UserRemove}/>
       <Route path ='/userupdate' component={UserUpdate}/>
       <Route path ='/actorhome' component={ActorHome}/>

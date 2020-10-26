@@ -7,7 +7,9 @@ export const UserMenu = () => <nav>
         <li><Link to ='/userregister'>User register</Link></li>
         <li><Link to ='/userremove'>User remove</Link></li>
         <li><Link to ='/userupdate'>User update</Link></li>
+        <li><Link to ='/userlist'>User List</Link></li>
     </ol>
+    
 </nav>
 
 export const ActorMenu = () => <nav>
@@ -17,3 +19,10 @@ export const ActorMenu = () => <nav>
     </ol>
 
 </nav>
+
+export const AuthMenu = () => (<nav>
+    <ol>
+        <li><Link to='/signup-form'>Siginup Form</Link></li>
+        <li><Link to='/signin-form'>Signin Form</Link></li>
+    </ol>
+</nav>)
