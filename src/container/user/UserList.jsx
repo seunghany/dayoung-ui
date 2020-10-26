@@ -8,19 +8,21 @@ const UserList = () => {
     useEffect(() => {
         axios.get('http://localhost:8080/api/users')
         .then(res=>{
-            // alert(`list Success`)
-            setData(res.data)
+            alert(`list Success`)
+            setData(res.data) // undefined
         })
         .catch(e =>{
             alert(`list Fail`)
             throw(e)
-        },[] )
-    })
+        } )
+    },[])
 
     return (<User>
         <table>
             <tr>
                 <th>userid</th>
+                <th>lname</th>
+                <th>fname</th>
                 <th>age</th>
                 <th>gender</th>
             </tr>

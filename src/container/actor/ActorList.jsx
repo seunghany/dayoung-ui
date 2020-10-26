@@ -5,19 +5,21 @@ import {Actor} from '../../template'
 // useEffect 시작하면 바로 시작됨
 const ActorList = () => {
     const [data, setData] = useState([])
-    useEffect(() => {
-        axios.get('http://localhost:8080/api/Actors')
+    useEffect((yourCallback) => {
+        axios.get('http://localhost:8080/api/actors')
         .then(res=>{
-            // alert(`list Success`)
-            setData(res.data)
+            alert(`list Success`)
+            // res.data = object,object
+            setData(res.data) // undefined
         })
         .catch(e =>{
             alert(`list Fail`)
             throw(e)
-        },[] )
-    })
+        } )
+    },[])
     // columns=['photoUrl', 'age','name','realName','religion','agency', 'spouse', 'children','debutYear','actorid']
     return (<Actor>
+        <h1>hello</h1>
         <table>
             <tr>
                 <th>Actorid</th>
@@ -34,10 +36,11 @@ const ActorList = () => {
             </tr>
             {data.map((i, index)=>(
                 <tr key={index}>
-                    <td>{i.Actorid}</td>
+                    <td>{i.actorid}</td>
                     <td>{i.name}</td>
                     <td>{i.realName}</td>
                     <td>{i.religion}</td>
+                    <td>{i.age}</td>
                     <td>{i.agency}</td>
                     <td>{i.spouse}</td>
                     <td>{i.children}</td>
