@@ -11,11 +11,11 @@ export default function UserLogin() {
         e.preventDefault()
         axios.post(`http://localhost:8080/api/access`, {userid, password})
             .then(res => {
-                alert(`Welcome ! ${res.data["name"]}.  ${res.data["userid"]}'s connection is successful. ! `)
+                alert(`Welcome ! ${res.data["fname"]}.  ${res.data["userid"]}'s connection is successful. ! `)
 
                 sessionStorage.setItem("sessionUser", res.data['userid']);
                 window.location.reload()
-                history.push("/home");
+                history.push("/home"); // 이 부분이 home 으로 갈 수 있게
                 
             })
             .catch(error => {

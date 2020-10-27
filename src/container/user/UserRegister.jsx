@@ -5,16 +5,17 @@ import React, {useState} from 'react'
 const UserRegister = () => {
     const [userid, setUserid] = useState()
     const [password, setPassword] = useState()
-    const [name, setName] = useState()
+    const [lname, setLname] = useState()
+    const [fname, setFname] = useState()
     const [age, setAge] = useState()
     const [gender, setGender] = useState()
-    const [dateOfBirth, setDateOfBirth] = useState()
+
     
     
     const register = e => {
         e.preventDefault()
         axios.post('http:localhost:8080/user/register', {
-            userid, password, name, age, gender, dateOfBirth
+            userid, password, lname, fname, age, gender
         })
         .then(
             console.log('Sign up Success 아이디가 생성 되셨습니다.')
@@ -39,8 +40,12 @@ const UserRegister = () => {
                     <td><input types="text" onChange={e=> setPassword(e.target.value)} /></td>
                 </tr>
                 <tr>
-                    <td>Name</td>
-                    <td><input types="text" onChange={e => setName(e.target.value)} /></td>
+                    <td>First Name</td>
+                    <td><input types="text" onChange={e => setFname(e.target.value)} /></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input types="text" onChange={e => setLname(e.target.value)} /></td>
                 </tr>
                 <tr>
                     <td>Age</td>
@@ -50,10 +55,7 @@ const UserRegister = () => {
                     <td>Gender</td>
                     <td><input types="text" onChange ={e => setGender(e.target.value)}/></td>
                 </tr>
-                <tr>
-                    <td>Date of Birth</td>
-                    <td><input types="text" onChange ={e => setDateOfBirth(e.target.value)}/></td>
-                </tr>
+        
                 <tr>
                     <td colspan={2}><button onClick={register}>Register</button>
                     <button>Cancel</button></td>

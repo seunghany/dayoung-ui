@@ -9,7 +9,7 @@ const UserList = () => {
         axios.get('http://localhost:8080/api/users')
         .then(res=>{
             alert(`list Success`)
-            setData(res.data) // undefined
+            setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
         })
         .catch(e =>{
             alert(`list Fail`)
@@ -20,11 +20,11 @@ const UserList = () => {
     return (<User>
         <table>
             <tr>
-                <th>userid</th>
-                <th>lname</th>
-                <th>fname</th>
-                <th>age</th>
-                <th>gender</th>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Gender (M or F)</th>
             </tr>
             {data.map((i, index)=>(
                 <tr key={index}>
