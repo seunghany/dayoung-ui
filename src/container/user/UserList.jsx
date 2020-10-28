@@ -22,11 +22,12 @@ const UserList = () => {
         .then(res => { 
             alert(`Success`)
         })
-        .catch( e => { alert(`Search fail`) })
+        .catch( e => { alert(`Search failed`) })
     }
 
     return (<User>
         Search ID : <input type="text" id='search'/> 
+        
             <button onClick={search}>Search</button>
         <table>
             <tr>

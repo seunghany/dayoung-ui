@@ -17,6 +17,22 @@ const ActorList = () => {
             throw(e)
         } )
     },[])
+
+    const Search = () => {
+        axios.search('http://localhost:8080/api/actors')
+        .then(res=>{
+            alert(`Search Success`)
+            setData(res.data)
+        })
+        .catch(e=>{
+            alert(`search Failed`)
+            throw(e)
+        })
+
+    }
+
+    
+
     // columns=['photoUrl', 'age','name','realName','religion','agency', 'spouse', 'children','debutYear','actorid']
     return (<Actor>
         <h1>hello</h1>

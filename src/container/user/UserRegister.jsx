@@ -62,23 +62,32 @@ const UserRegister = () => {
     
     const classes = useStyles();
 
-    const register = e => {
-      e.preventDefault()
-      axios.post('http:localhost:8080/api/user/register', {
-          'user_id':email, 'password':password, 'lname':lname, 'fname':fname, 'age':age, 'gender':gender, 'email':email
-      })
-      .then(
-          console.log('Sign up Success 아이디가 생성 되셨습니다.')
-      )
-      .error(
-          console.log('Sign up Fail 아이디가 생성 되지 않았습니다.')
-      )
+    const Register = e => {
+        
+        e.preventDefault()
+        alert("heelo")
+        console.log("enttteeeeered ----------------------1")
+        axios.post(`http://localhost:8080/api/auth`, {
+            'user_id':email, 'password':password,  'gender':gender, 'email':email, 'lname':lname, 'fname':fname, 'age':age,
+        })
+        .then(res=>{
+            alert(`아이디 생성`)
+            //setData(res.data)
+            // console.log('Sign up Success 아이디가 생성 되셨습니다.')
+        })
+        .catch( e=> {
+            alert(`아이디 생성 실패`)
+            // console.log('Sign up Fail 아이디가 생성 되지 않았습니다.')
+            throw(e)
+        }
+            
+        )
   }
 
-    const SignupButton = (e) => {
-      e.preventDefault()
-      alert(`fname: ${fname} lname: ${lname} email : ${email} age :${age} gender: ${gender}  password : ${password}`)
-    }
+    // const SignupButton = (e) => {
+    //   e.preventDefault()
+    //   alert(`fname: ${fname} lname: ${lname} email : ${email} age :${age} gender: ${gender}  password : ${password}`)
+    // }
     // alert('회원가입 완료')
     return <>
     <Container component="main" maxWidth="xs">
@@ -92,6 +101,18 @@ const UserRegister = () => {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+                onChange={e => {setLname(`${e.target.value}`)}}
+              />
+            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
@@ -103,19 +124,6 @@ const UserRegister = () => {
                 label="First Name"
                 autoFocus
                 onChange={e => {setFname(`${e.target.value}`)}}
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                onChange={e => {setLname(`${e.target.value}`)}}
               />
             </Grid>
 
@@ -187,7 +195,7 @@ const UserRegister = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick ={SignupButton}
+            onClick ={Register}
           >
             Sign Up Here
           </Button>
