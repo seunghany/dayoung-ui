@@ -1,0 +1,7 @@
+Module not found: Can't resolve '@material-ui/core
+
+yarn add @material-ui/core
+
+Module not found: Can't resolve '@material-ui/icons/PhotoCamera
+
+yarn add @material-ui/icons

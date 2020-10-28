@@ -16,8 +16,18 @@ const UserList = () => {
             throw(e)
         } )
     },[])
+    const search = e => {
+        alert(`Key Value: ${document.getElementById('search').value}`)
+        axios.get(`http://localhost:8080/api/user/${document.getElementById('search').value}`)
+        .then(res => { 
+            alert(`Success`)
+        })
+        .catch( e => { alert(`Search fail`) })
+    }
 
     return (<User>
+        Search ID : <input type="text" id='search'/> 
+            <button onClick={search}>Search</button>
         <table>
             <tr>
                 <th>User ID</th>
@@ -28,7 +38,7 @@ const UserList = () => {
             </tr>
             {data.map((i, index)=>(
                 <tr key={index}>
-                    <td>{i.userid}</td>
+                    <td>{i.user_id}</td>
                     <td>{i.lname}</td>
                     <td>{i.fname}</td>
                     <td>{i.age}</td>

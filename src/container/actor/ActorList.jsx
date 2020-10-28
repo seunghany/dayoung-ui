@@ -36,16 +36,16 @@ const ActorList = () => {
             </tr>
             {data.map((i, index)=>(
                 <tr key={index}>
-                    <td>{i.actorid}</td>
+                    <td>{i.actor_id}</td>
                     <td>{i.name}</td>
-                    <td>{i.realName}</td>
+                    <td>{i.real_name}</td>
                     <td>{i.religion}</td>
                     <td>{i.age}</td>
                     <td>{i.agency}</td>
                     <td>{i.spouse}</td>
                     <td>{i.children}</td>
-                    <td>{i.debutYear}</td>
-                    <td>{i.photoUrl}</td>
+                    <td>{i.debut_year}</td>
+                    <td>{i.photo_url}</td>
                 </tr>
             ))}
             
