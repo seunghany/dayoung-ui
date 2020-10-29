@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -68,28 +68,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
-export default function ActorQuiz() {
-  const history = useHistory();
-  const classes = useStyles();
-  const [data, setData] = useState([])
-  const MoreInfo = (id) => {
-    // const actor_id = document.getElementById('view').getAttribute('value')
-    localStorage.setItem("actor_id", id)
-    history.push('/actorquizsingle')
-  }
+export default function ActorQuizSingle() {
+    const history = useHistory();
+    const backToList = () => {
+        history.push("./actorquiz")
+    }
+    const classes = useStyles()
+    const [data, setData] = useState([])
+    const one_id = localStorage.getItem('actor_id')
     useEffect(() => {
-        axios.get('http://localhost:8080/api/actors')
+        axios.get(`http://localhost:8080/api/actor/${one_id}`)
         .then(res=>{
             // alert(`list Success`)
+            console.log(typeof(res.Data))
             setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
+            
         })
-        .catch(e =>{
-            alert(`list Fail`)
-            throw(e)
-        } )
+        .catch( e => {alert(`Search failed`) })
     },[])
+    
+    
   return (
     <React.Fragment>
       <CssBaseline />
@@ -114,51 +112,49 @@ export default function ActorQuiz() {
           {/* End hero unit */}
           
           <Grid className = "helloooooooooooooooooooooo" container spacing={5}>
-            {data.map((i, index) => (
-              <Grid item key={index} xs={12} sm={3}>
+              <Grid item xs={12} sm={3}>
                 <Card className="아무거나" >
-                  
+                  <Link href= '/'>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={i.photo_url}
-                    title={i.name}
+                    image= {data['photo_url']}
+                    title= {data['name']}
                   />
-                
+                </Link>
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {i.name}
+                      {data['name']}
                     </Typography>
                     <Typography>
-                      나이 {i.age}
+                      나이 {data['age']}
                     </Typography>
                     <Typography>
-                      본명 {i.real_name}
+                      본명 {data['real_name']}
                     </Typography>
                     <Typography>
-                      종교 {i.religion}
+                      종교 {data['religion']}
                     </Typography>
                     <Typography>
-                      소속사 {i.agency}
+                      소속사 {data['agency']}
                     </Typography>
                     <Typography>
-                      자녀 {i.children}
+                      자녀 {data['children']}
                     </Typography>
                     <Typography>
-                      데뷔년도 {i.debut_year}
+                      데뷔년도 {data['debut_year']}
                     </Typography>
                   </CardContent>
                   
                   <CardActions>
-                    <Button size="small" color="primary" onClick={e => MoreInfo(i.actor_id)} >
-                      View {i.actor_id}
-                    </Button>
                     <Button size="small" color="primary">
-                      Edit
+                      게임 시작
+                    </Button>
+                    <Button size="small" color="primary" onClick={backToList}>
+                      돌아가기
                     </Button>
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
           </Grid>
 
 

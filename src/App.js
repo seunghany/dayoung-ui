@@ -3,7 +3,7 @@ import { Nav } from './components'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { Home, User, Actor } from './template'
 import {UserLogin, UserRegister, UserRemove, UserUpdate, UserList, UserSearch} from './container/user'
-import {ActorHome, ActorQuiz, ActorList} from './container/actor'
+import {ActorHome, ActorQuiz, ActorList,ActorQuizSingle} from './container/actor'
 
 export default function App(){
   const [loggedIn, setLoggedIn] = useState(sessionStorage.getItem('sessionUser'))
@@ -23,6 +23,7 @@ export default function App(){
       <Route path ='/userupdate' component={UserUpdate}/>
       <Route path ='/actorhome' component={ActorHome}/>
       <Route path ='/actorquiz' component={ActorQuiz}/>
+      <Route path ='/actorquizsingle' component={ActorQuizSingle}/>
 
     </Switch>
 
