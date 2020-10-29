@@ -8,6 +8,7 @@ export const UserMenu = () => <nav>
         <li><Link to ='/userremove'>User remove</Link></li>
         <li><Link to ='/userupdate'>User update</Link></li>
         <li><Link to ='/userlist'>User List</Link></li>
+        <li><Link to ='/usersearch'>User Search</Link></li>
     </ol>
     
 </nav>

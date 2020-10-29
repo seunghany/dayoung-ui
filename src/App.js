@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Nav } from './components'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { Home, User, Actor } from './template'
-import {UserLogin, UserRegister, UserRemove, UserUpdate, UserList} from './container/user'
+import {UserLogin, UserRegister, UserRemove, UserUpdate, UserList, UserSearch} from './container/user'
 import {ActorHome, ActorQuiz, ActorList} from './container/actor'
 
 export default function App(){
@@ -17,6 +17,7 @@ export default function App(){
       <Route path ='/userlogin' component={UserLogin}/>
       <Route path ='/userregister' component={UserRegister}/>
       <Route path='/userlist' component={UserList}/>
+      <Route path='/usersearch' component={UserSearch}/>
       <Route path='/actorlist' component={ActorList}/>
       <Route path ='/userremove' component={UserRemove}/>
       <Route path ='/userupdate' component={UserUpdate}/>

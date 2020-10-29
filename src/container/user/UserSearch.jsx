@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {User} from '../../template'
-import {useHistory } from "react-router-dom";
 
 // useEffect 시작하면 바로 시작됨
 const UserList = () => {
     const [data, setData] = useState([])
-    const history = useHistory();
     useEffect(() => {
         axios.get('http://localhost:8080/api/users')
         .then(res=>{
-            alert(`list Success`)
+            alert(`list search`)
             console.log(typeof(res.Data))
             setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
         })
@@ -20,23 +18,17 @@ const UserList = () => {
         } )
     },[])
     const search = e => {
-        
         alert(`Key Value: ${document.getElementById('search').value}`)
         axios.get(`http://localhost:8080/api/user/${document.getElementById('search').value}`)
         .then(res => { 
             alert(`Success`)
             console.log(typeof(res.data))
             // setData(res.data)
-            localStorage.setItem("localUser", res.data);
-            history.push('/usersearch')
         })
         .catch( e => { alert(`Search failed`) })
     }
 
     return (<User>
-        Search ID : <input type="text" id='search'/> 
-        
-            <button onClick={search}>Search</button>
         <table>
             <tr>
                 <th>User ID</th>
