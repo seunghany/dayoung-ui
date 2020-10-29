@@ -51,6 +51,7 @@ const ActorList = () => {
 
             </tr>
             {data.map((i, index)=>(
+                // <a href="/actor/+ i.actor_id" >
                 <tr key={index}>
                     <td>{i.actor_id}</td>
                     <td>{i.name}</td>
@@ -63,6 +64,7 @@ const ActorList = () => {
                     <td>{i.debut_year}</td>
                     <td>{i.photo_url}</td>
                 </tr>
+                // </a>
             ))}
             
         </table>

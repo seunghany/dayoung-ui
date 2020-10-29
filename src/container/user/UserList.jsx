@@ -10,7 +10,7 @@ const UserList = () => {
     useEffect(() => {
         axios.get('http://localhost:8080/api/users')
         .then(res=>{
-            alert(`list Success`)
+            // alert(`list Success`)
             console.log(typeof(res.Data))
             setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
         })
@@ -20,17 +20,25 @@ const UserList = () => {
         } )
     },[])
     const search = e => {
-        
-        alert(`Key Value: ${document.getElementById('search').value}`)
-        axios.get(`http://localhost:8080/api/user/${document.getElementById('search').value}`)
+        const u_id = document.getElementById('search').value
+        // alert(`Key Value: ${u_id}`)
+        axios.get(`http://localhost:8080/api/user/${u_id}`)
         .then(res => { 
-            alert(`Success`)
-            console.log(typeof(res.data))
-            // setData(res.data)
-            localStorage.setItem("localUser", res.data);
+            // alert(`Success`)
+            
+            // const user = JSON.parse(res.data)
+            // alert(`type: ${typeof(user)}`)
+            // localStorage.setItem('localUser', JSON.stringify(user))
+            // alert(res.data['user_id'])
+            localStorage.setItem('test','test answer')
+            localStorage.setItem("user_id", res.data['user_id']);
+            localStorage.setItem("fname", res.data['fname']);
+            localStorage.setItem("lname", res.data['lname']);
+            localStorage.setItem("age", res.data['age']);
+            localStorage.setItem("gender", res.data['gender']);
             history.push('/usersearch')
         })
-        .catch( e => { alert(`Search failed`) })
+        .catch( e => {alert(`Search failed`) })
     }
 
     return (<User>
@@ -48,8 +56,8 @@ const UserList = () => {
             {data.map((i, index)=>(
                 <tr key={index}>
                     <td>{i.user_id}</td>
-                    <td>{i.lname}</td>
                     <td>{i.fname}</td>
+                    <td>{i.lname}</td>
                     <td>{i.age}</td>
                     <td>{i.gender}</td>
                 </tr>

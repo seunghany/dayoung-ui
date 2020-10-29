@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+// import Link from 'react-router-dom'
 
 
 function Copyright() {
@@ -51,11 +52,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '100%', // 16:9
+    paddingTop: '150%', // 16:9
     
   },
   cardContent: {
     flexGrow: 1,
+    height:"250px",
+    width:"223px"
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -99,17 +102,20 @@ export default function ActorQuiz() {
             </Typography>  
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="md"> 
           {/* End hero unit */}
-          <Grid container spacing={5}>
+          
+          <Grid className = "helloooooooooooooooooooooo" container spacing={5}>
             {data.map((i, index) => (
               <Grid item key={index} xs={12} sm={3}>
-                <Card className={classes.card}>
+                <Card className="아무거나" >
+                  <Link href= '/'>
                   <CardMedia
                     className={classes.cardMedia}
                     image={i.photo_url}
-                    title={i.name} 
+                    title={i.name}
                   />
+                </Link>
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {i.name}
