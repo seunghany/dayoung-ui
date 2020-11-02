@@ -1,24 +1,41 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect,useCallback, useState} from 'react'
 import axios from 'axios'
 import {User} from '../../template'
 import {useHistory } from "react-router-dom";
+import { context as c } from '../../context'
+
 
 // useEffect 시작하면 바로 시작됨
 const UserList = () => {
+    const fetchAllUsers = useCallback(async () => {
+        try{
+            const req = {
+                method: c.get, 
+                url: `${c.url}/api/users`
+            }
+            const res = await axios(req)   
+            setData(res.data)
+        }catch(error){
+            alert(`fetchAllUsers failure`)
+            throw(error)
+        }
+    },[]) 
+    
     const [data, setData] = useState([])
     const history = useHistory();
-    useEffect(() => {
-        axios.get('http://localhost:8080/api/users')
-        .then(res=>{
-            // alert(`list Success`)
-            console.log(typeof(res.Data))
-            setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
-        })
-        .catch(e =>{
-            alert(`list Fail`)
-            throw(e)
-        } )
-    },[])
+    useEffect(() => {fetchAllUsers()},[]) 
+    // useEffect(() => {
+    //     axios.get('http://localhost:8080/api/users')
+    //     .then(res=>{
+    //         // alert(`list Success`)
+    //         console.log(typeof(res.Data))
+    //         setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
+    //     })
+    //     .catch(e =>{
+    //         alert(`list Fail`)
+    //         throw(e)
+    //     } )
+    // },[])
     const search = e => {
         const u_id = document.getElementById('search').value
         localStorage.setItem("user_id", u_id)
