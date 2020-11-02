@@ -23,23 +23,6 @@ const UserList = () => {
         const u_id = document.getElementById('search').value
         localStorage.setItem("user_id", u_id)
         history.push('/usersearch')
-        // axios.get(`http://localhost:8080/api/user/${u_id}`)
-        // .then(res => { 
-        //     // alert(`Success`)
-            
-        //     // const user = JSON.parse(res.data)
-        //     // alert(`type: ${typeof(user)}`)
-        //     // localStorage.setItem('localUser', JSON.stringify(user))
-        //     // alert(res.data['user_id'])
-        //     localStorage.setItem('test','test answer')
-        //     localStorage.setItem("user_id", res.data['user_id']);
-        //     localStorage.setItem("fname", res.data['fname']);
-        //     localStorage.setItem("lname", res.data['lname']);
-        //     localStorage.setItem("age", res.data['age']);
-        //     localStorage.setItem("gender", res.data['gender']);
-        //     history.push('/usersearch')
-        // })
-        // .catch( e => {alert(`Search failed`) })
     }
 
     return (<User>

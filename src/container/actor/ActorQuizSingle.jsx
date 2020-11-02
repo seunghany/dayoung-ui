@@ -74,7 +74,7 @@ export default function ActorQuizSingle() {
         history.push("./actorquiz")
     }
     const classes = useStyles()
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
     const one_id = localStorage.getItem('actor_id')
     useEffect(() => {
         axios.get(`http://localhost:8080/api/actor/${one_id}`)
