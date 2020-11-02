@@ -5,43 +5,25 @@ import {useHistory } from "react-router-dom";
 // useEffect 시작하면 바로 시작됨
 const UserSearch = () => {
     const history = useHistory();
-    // localStorage.setItem('test','test answer')
-    // localStorage.setItem("localUser", res.data);
-    // const test = localStorage.getItem('test')
-    const user_id = localStorage.getItem('user_id')
-    const fname = localStorage.getItem('fname')
-    const lname = localStorage.getItem('lname')
-    const age = localStorage.getItem('age')
-    const gender = localStorage.getItem('gender')
-    // const user = localStorage.getItem('localUser')
-    // user = JSON.parse(user)
-    // alert(`제발 되라2222 ${user['user_id']}`)
-    
-    
     const backToList = () => {
         history.push("./userlist")
-
     }
-    const search = e => {
-        // const u_id = document.getElementById('search').value
-        // alert(`Key Value: ${u_id}`)
-        axios.get(`http://localhost:8080/api/user/${document.getElementById('search').value}`)
-        .then(res => { 
-            // alert(`Success`)
-            
-            // const user = JSON.parse(res.data)
-            // alert(`type: ${typeof(user)}`)
-            // localStorage.setItem('localUser', JSON.stringify(user))
-            // alert(res.data['user_id'])
-            localStorage.setItem('test','test answer')
-            localStorage.setItem("user_id", res.data['user_id']);
-            localStorage.setItem("fname", res.data['fname']);
-            localStorage.setItem("lname", res.data['lname']);
-            localStorage.setItem("age", res.data['age']);
-            localStorage.setItem("gender", res.data['gender']);
-            history.push('/usersearch')
+    
+    const [data, setData] = useState([])
+    const u_id = localStorage.getItem('user_id')
+    useEffect(() => {
+        axios.get(`http://localhost:8080/api/user/${u_id}`)
+        .then(res=>{
+            console.log(typeof(res.Data))
+            setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
         })
         .catch( e => {alert(`Search failed`) })
+    },[])
+    
+    const search = e => {
+        const u_id = document.getElementById('search').value
+        localStorage.setItem("user_id", u_id)
+        window.location.reload()
     }
         
 
@@ -59,11 +41,11 @@ const UserSearch = () => {
                 <th>Gender (M or F)</th>
             </tr>
             <tr>
-                <th>{user_id}</th>
-                <th>{lname}</th>
-                <th>{fname}</th>
-                <th>{age}</th>
-                <th>{gender}</th>
+                <th>{data['user_id']}</th>
+                <th>{data['lname']}</th>
+                <th>{data['fname']}</th>
+                <th>{data['age']}</th>
+                <th>{data['gender']}</th>
             </tr>
             
         </table>

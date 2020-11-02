@@ -74,6 +74,7 @@ export default function ActorQuiz() {
   const history = useHistory();
   const classes = useStyles();
   const [data, setData] = useState([])
+  
   const MoreInfo = (id) => {
     // const actor_id = document.getElementById('view').getAttribute('value')
     localStorage.setItem("actor_id", id)
