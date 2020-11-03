@@ -75,11 +75,21 @@ export default function ActorQuiz() {
   const classes = useStyles();
   const [data, setData] = useState([])
 
-  const MoreInfo = (id) => {
+  const moreInfo = (id) => {
     // const actor_id = document.getElementById('view').getAttribute('value')
     // const id = e.target.getAttribute('actor_id')
     localStorage.setItem("actor_id", id)
     history.push('/actorquizsingle')
+  }
+  const deleteActor = (id) => {
+    axios.delete(`http://localhost:8080/api/actor/${id}`)
+    .then(res=>{
+      alert("success")
+      window.location.reload()
+    })
+    .catch(e => {
+      alert('failed')
+    })
   }
   useEffect(() => {
       axios.get('http://localhost:8080/api/actors')
@@ -151,11 +161,11 @@ export default function ActorQuiz() {
                   </CardContent>
                   
                   <CardActions>
-                    <Button size="small" color="primary" actorid={i.actor_id} onClick={e => MoreInfo(i.actor_id)} >
+                    <Button size="small" color="primary" actorid={i.actor_id} onClick={e => moreInfo(i.actor_id)} >
                       View {i.actor_id}
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button size="small" color="primary" onClick={e => deleteActor(i.actor_id)}>
+                      Delete
                     </Button>
                   </CardActions>
                 </Card>
