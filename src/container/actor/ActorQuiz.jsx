@@ -74,23 +74,24 @@ export default function ActorQuiz() {
   const history = useHistory();
   const classes = useStyles();
   const [data, setData] = useState([])
-  
+
   const MoreInfo = (id) => {
     // const actor_id = document.getElementById('view').getAttribute('value')
+    // const id = e.target.getAttribute('actor_id')
     localStorage.setItem("actor_id", id)
     history.push('/actorquizsingle')
   }
-    useEffect(() => {
-        axios.get('http://localhost:8080/api/actors')
-        .then(res=>{
-            // alert(`list Success`)
-            setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
-        })
-        .catch(e =>{
-            alert(`list Fail`)
-            throw(e)
-        } )
-    },[])
+  useEffect(() => {
+      axios.get('http://localhost:8080/api/actors')
+      .then(res=>{
+          // alert(`list Success`)
+          setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
+      })
+      .catch(e =>{
+          alert(`list Fail`)
+          throw(e)
+      } )
+  },[])
   return (
     <React.Fragment>
       <CssBaseline />
@@ -150,7 +151,7 @@ export default function ActorQuiz() {
                   </CardContent>
                   
                   <CardActions>
-                    <Button size="small" color="primary" onClick={e => MoreInfo(i.actor_id)} >
+                    <Button size="small" color="primary" actorid={i.actor_id} onClick={e => MoreInfo(i.actor_id)} >
                       View {i.actor_id}
                     </Button>
                     <Button size="small" color="primary">

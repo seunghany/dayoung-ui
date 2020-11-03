@@ -75,16 +75,17 @@ export default function ActorQuizSingle() {
     }
     const classes = useStyles()
     const [data, setData] = useState([])
-    const one_id = localStorage.getItem('actor_id')
+    
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/actor/${one_id}`)
-        .then(res=>{
-            // alert(`list Success`)
-            console.log(typeof(res.Data))
-            setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
-            
-        })
-        .catch( e => {alert(`Search failed`) })
+      const one_id = localStorage.getItem('actor_id')
+      axios.get(`http://localhost:8080/api/actor/${one_id}`)
+      .then(res=>{
+          // alert(`list Success`)
+          console.log(typeof(res.Data))
+          setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
+          
+      })
+      .catch( e => {alert(`Search failed`) })
     },[])
     
     
@@ -112,7 +113,7 @@ export default function ActorQuizSingle() {
           {/* End hero unit */}
           
           <Grid className = "helloooooooooooooooooooooo" container spacing={5}>
-              <Grid item xs={12} sm={3}>
+              <Grid item xs={12} sm={4}>
                 <Card className="아무거나" >
                   <Link href= '/'>
                   <CardMedia
@@ -154,6 +155,9 @@ export default function ActorQuizSingle() {
                     </Button>
                   </CardActions>
                 </Card>
+              </Grid>
+              <Grid item xs={12} sm={8}>
+                
               </Grid>
           </Grid>
 

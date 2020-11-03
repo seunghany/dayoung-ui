@@ -11,7 +11,7 @@ const UserSearch = () => {
 
     const [data, setData] = useState([])
     
-    const fetchOneUser = useCallback(async e => {
+    const fetchOneUser = useCallback(async () => {
         const u_id = localStorage.getItem('user_id')
         try {
             console.log(`Search Id is ${u_id}`) 
@@ -27,7 +27,7 @@ const UserSearch = () => {
             console.log(`Error ${error}`) 
             alert('failed')
         }
-    },[])
+    }) // 혹시 안되면 ) 전에 [] 더할것
     useEffect(() => {fetchOneUser()},[])
 
     // useEffect(() => {
@@ -42,7 +42,7 @@ const UserSearch = () => {
     const search = e => {
         const u_id = document.getElementById('search').value
         localStorage.setItem("user_id", u_id)
-        window.location.reload()
+        fetchOneUser()
     }
         
 

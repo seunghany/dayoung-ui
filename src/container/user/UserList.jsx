@@ -19,7 +19,7 @@ const UserList = () => {
             alert(`fetchAllUsers failure`)
             throw(error)
         }
-    },[]) 
+    }) // 혹시 안되면 ) 전에 [] 더할것
     
     const [data, setData] = useState([])
     const history = useHistory();

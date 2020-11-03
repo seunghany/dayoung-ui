@@ -72,7 +72,8 @@ export default function UserLogin() {
           .then(res => {
               alert(`Welcome ! ${res.data["fname"]}.  ${res.data["user_id"]}'s connection is successful. ! `)
 
-              sessionStorage.setItem("sessionUser", res.data['user_id']);
+              sessionStorage.setItem("sessionUser", res.data['user_id'])
+              
               window.location.reload()
               history.push("/actor"); // 여기 치는 부분으로 이동
               
