@@ -20,9 +20,11 @@ const UserSearch = () => {
                 url: `${c.url}/api/user/${u_id}`,
                 auth: c.auth
             }
-
             const res = await axios(req)  
+            
             setData(res.data)
+            alert(data['fname'])
+
         } catch (error) {
             console.log(`Error ${error}`) 
             alert('failed')
@@ -43,6 +45,7 @@ const UserSearch = () => {
         const u_id = document.getElementById('search').value
         localStorage.setItem("user_id", u_id)
         fetchOneUser()
+        
     }
         
 
@@ -65,6 +68,7 @@ const UserSearch = () => {
                 <th>{data['fname']}</th>
                 <th>{data['age']}</th>
                 <th>{data['gender']}</th>
+                
             </tr>
             
         </table>

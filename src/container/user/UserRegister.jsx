@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-// import {User} from '../../template'
+import {User} from '../../template'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -77,9 +77,7 @@ const UserRegister = () => {
             alert(`아이디 생성 실패`)
             // console.log('Sign up Fail 아이디가 생성 되지 않았습니다.')
             throw(e)
-        }
-            
-        )
+        })
   }
 
     // const SignupButton = (e) => {
