@@ -68,8 +68,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
 export default function ActorQuiz() {
   const history = useHistory();
   const classes = useStyles();
@@ -81,36 +79,57 @@ export default function ActorQuiz() {
     localStorage.setItem("actor_id", id)
     history.push('/actorquizsingle')
   }
+  const addActor = () => {
+    const actor_name = document.getElementById('search').value
+    axios.post(`http://localhost:8080/api/addActor/${actor_name}`)
+    .then(res=>{
+      alert("배우 생성 완료")
+      window.location.reload()
+    })
+    .catch(e => {
+      alert('배우 생성 실패')
+    })
+  }
+
   const deleteActor = (id) => {
     axios.delete(`http://localhost:8080/api/actor/${id}`)
     .then(res=>{
-      alert("success")
+      alert("배우 삭제 완료")
       window.location.reload()
     })
     .catch(e => {
       alert('failed')
     })
   }
-  useEffect(() => {
-      axios.get('http://localhost:8080/api/actors')
-      .then(res=>{
-          // alert(`list Success`)
-          setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
-      })
-      .catch(e =>{
-          alert(`list Fail`)
-          throw(e)
-      } )
-  },[])
+
+  const showList = () => {
+    axios.get('http://localhost:8080/api/actors')
+    .then(res=>{
+        // alert(`list Success`)
+        setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
+    })
+    .catch(e =>{
+        alert(`list Fail`)
+        throw(e)
+    } )
+  }
+  useEffect(() => {showList()},[])
   return (
+    
     <React.Fragment>
+      
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
             스무고개
+            
           </Typography>
+          <form>
+          추가할 배우: <input type="text" id='search'/> 
+            <button onClick={addActor}>배우 추가</button>
+          </form>
         </Toolbar>
       </AppBar>
       <main>

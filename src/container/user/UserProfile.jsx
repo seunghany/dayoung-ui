@@ -119,7 +119,6 @@ const UserProfile = () => {
         url: `${c.url}/api/delete/${u_id}`,
         auth: c.auth
       }
-      alert("11111111111111111111111111111111111111111111111111")
       axios(req) 
       history.push('/')
 

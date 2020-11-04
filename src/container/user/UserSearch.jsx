@@ -21,10 +21,7 @@ const UserSearch = () => {
                 auth: c.auth
             }
             const res = await axios(req)  
-            
             setData(res.data)
-            alert(data['fname'])
-
         } catch (error) {
             console.log(`Error ${error}`) 
             alert('failed')
