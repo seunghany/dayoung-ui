@@ -1,10 +1,10 @@
 import React, {useEffect, useCallback, useState} from 'react'
 import axios from 'axios'
 import {User} from '../../templates'
-import {useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom"
 import { context as c } from '../../context'
 const UserSearch = () => {
-    const history = useHistory();
+    const history = useHistory()
     const backToList = () => {
         history.push("./userlist")
     }

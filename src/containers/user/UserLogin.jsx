@@ -1,20 +1,20 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom"
 //----------------------------------------------------------------
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import TextField from '@material-ui/core/TextField'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import Link from '@material-ui/core/Link'
+import Paper from '@material-ui/core/Paper'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
+// import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 
 function Copyright() {
   return (
@@ -26,7 +26,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -58,14 +58,14 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+}))
 
 export default function UserLogin() {
-  const classes = useStyles();
+  const classes = useStyles()
   const [user_id, setUserid] = useState('')
   const [password, setPassword] = useState('')
   
-  const history = useHistory();
+  const history = useHistory()
   const login = e => {
       e.preventDefault()
       axios.post(`http://localhost:8080/api/access`, {"user_id":user_id, "password":password})
@@ -75,12 +75,12 @@ export default function UserLogin() {
               sessionStorage.setItem("sessionUser", res.data['user_id'])
               
               window.location.reload()
-              history.push("/actor"); // 여기 치는 부분으로 이동
+              history.push("/actor")  // 여기 치는 부분으로 이동
               
           })
           .catch(error => {
-              alert("Please check your ID or password.");
-              window.location.reload();
+              alert("Please check your ID or password.")
+              window.location.reload()
           })
 
   }
@@ -151,5 +151,5 @@ export default function UserLogin() {
         </div>
       </Grid>
     </Grid>
-  );
+  )
 }

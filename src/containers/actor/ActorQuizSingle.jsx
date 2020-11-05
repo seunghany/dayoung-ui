@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom"
 
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import AppBar from '@material-ui/core/AppBar'
+import Button from '@material-ui/core/Button'
+import CameraIcon from '@material-ui/icons/PhotoCamera'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Grid from '@material-ui/core/Grid'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Link from '@material-ui/core/Link'
 // import Link from 'react-router-dom'
 import Chatbot from '../chatbot/components/Chatbot'
 
@@ -29,7 +29,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -65,11 +65,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
-}));
+}))
 
 
 export default function ActorQuizSingle() {
-    const history = useHistory();
+    const history = useHistory()
     const backToList = () => {
         history.push("./actorquiz")
     }
@@ -160,7 +160,6 @@ export default function ActorQuizSingle() {
                 {/* 여기 chatbot 들어갈 거임 */}
                 여기 쳇봇 들어갈 거임
                 {/* <Chatbot/> */}
-                
               </Grid>
           </Grid>
 
@@ -179,5 +178,5 @@ export default function ActorQuizSingle() {
       </footer>
       {/* End footer */}
     </React.Fragment>
-  );
+  )
 }

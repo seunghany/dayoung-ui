@@ -1,7 +1,7 @@
 import React, {useEffect,useCallback, useState} from 'react'
 import axios from 'axios'
 import {User} from '../../templates'
-import {useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom"
 import { context as c } from '../../context'
 
 
@@ -22,7 +22,7 @@ const UserList = () => {
     }) // 혹시 안되면 ) 전에 [] 더할것
     
     const [data, setData] = useState([])
-    const history = useHistory();
+    const history = useHistory()
     useEffect(() => {fetchAllUsers()},[]) 
     // useEffect(() => {
     //     axios.get('http://localhost:8080/api/users')
