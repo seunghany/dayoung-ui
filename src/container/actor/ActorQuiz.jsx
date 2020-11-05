@@ -79,6 +79,7 @@ export default function ActorQuiz() {
     localStorage.setItem("actor_id", id)
     history.push('/actorquizsingle')
   }
+  
   const addActor = () => {
     const actor_name = document.getElementById('search').value
     axios.post(`http://localhost:8080/api/addActor/${actor_name}`)
@@ -87,7 +88,7 @@ export default function ActorQuiz() {
       window.location.reload()
     })
     .catch(e => {
-      alert('배우 생성 실패')
+      alert('Database 에 없는 배우 입니다.')
     })
   }
 
