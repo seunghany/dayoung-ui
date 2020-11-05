@@ -111,7 +111,6 @@ const UserProfile = () => {
 }
   const history = useHistory();
   const deleteConfirm = useCallback(async () => {
-    
     const u_id = sessionStorage.getItem('sessionUser')
     try {
       const req = {
