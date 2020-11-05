@@ -1,5 +1,5 @@
 import React, {useEffect, useCallback, useState} from 'react'
-import {User} from '../../template'
+import {User} from '../../templates'
 import {useHistory } from "react-router-dom";
 import { context as c } from '../../context'
 import axios from 'axios'

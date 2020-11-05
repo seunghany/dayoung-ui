@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Actor} from '../../template'
+import {Actor} from '../../templates'
 
 // useEffect 시작하면 바로 시작됨
 const ActorList = () => {

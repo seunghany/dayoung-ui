@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import {Actor} from '../../../template'  // 아직 없음
 import React, {useState} from 'react'
-import {Actor} from '../../template'
+import {Actor} from '../../templates'
 
 
 // Columns = [userid,password,name,age,dateOfBirth,gender]
