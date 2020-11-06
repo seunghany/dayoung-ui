@@ -5,6 +5,7 @@ import { Home, User, Actor } from './templates'
 import {UserLogin, UserRegister, UserUpdate, UserList, UserSearch, UserProfile} from './containers/user'
 import {ActorHome, ActorQuiz, ActorList,ActorQuizSingle} from './containers/actor'
 
+// react -> redux -> thunk -> saga -> Mobx
 export default function App(){
   const [loggedIn, setLoggedIn] = useState(sessionStorage.getItem('sessionUser'))
   return (<>
@@ -24,8 +25,6 @@ export default function App(){
       <Route path ='/actorquiz' component={ActorQuiz}/>
       <Route path ='/actorquizsingle' component={ActorQuizSingle}/>
       <Route path ='/userprofile' component={UserProfile}/>
-      
-
     </Switch>
 
   </Router>

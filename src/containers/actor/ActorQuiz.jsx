@@ -69,18 +69,26 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function ActorQuiz() {
+  /*
+  스무고개 페이지.
+  배우들의 정보를 페이지에서 보여준다
+  */
   const history = useHistory()
   const classes = useStyles()
   const [data, setData] = useState([])
 
-  const moreInfo = (id) => {
-    // const actor_id = document.getElementById('view').getAttribute('value')
-    // const id = e.target.getAttribute('actor_id')
+  const selectActor = (id) => {
+    /*
+    해당 배우의 ID 를 받아서 퀴즈 시작 페이지로 보내준다.
+    */
     localStorage.setItem("actor_id", id)
     history.push('/actorquizsingle')
   }
   
   const addActor = () => {
+    /*
+    화면에 없는 배우를 더해준다.
+    */
     const actor_name = document.getElementById('search').value
     axios.post(`http://localhost:8080/api/addActor/${actor_name}`)
     .then(res=>{
@@ -93,6 +101,9 @@ export default function ActorQuiz() {
   }
 
   const deleteActor = (id) => {
+    /*
+    배우를 지워준다.
+    */
     axios.delete(`http://localhost:8080/api/actor/${id}`)
     .then(res=>{
       alert("배우 삭제 완료")
@@ -104,6 +115,9 @@ export default function ActorQuiz() {
   }
 
   const showList = () => {
+    /*
+    스무고개 할 수 있는 배우들을 보여준다.
+    */
     axios.get('http://localhost:8080/api/actors')
     .then(res=>{
         // alert(`list Success`)
@@ -114,11 +128,11 @@ export default function ActorQuiz() {
         throw(e)
     } )
   }
-  useEffect(() => {showList()},[])
+  useEffect(() => {showList()},[])  // 화면에 스무고개 가능한 배우들을 보여준다.
+
   return (
     
     <React.Fragment>
-      
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -181,7 +195,7 @@ export default function ActorQuiz() {
                   </CardContent>
                   
                   <CardActions>
-                    <Button size="small" color="primary" actorid={i.actor_id} onClick={e => moreInfo(i.actor_id)} >
+                    <Button size="small" color="primary" actorid={i.actor_id} onClick={e => selectActor(i.actor_id)} >
                       View {i.actor_id}
                     </Button>
                     <Button size="small" color="primary" onClick={e => deleteActor(i.actor_id)}>

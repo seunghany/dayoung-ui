@@ -35,63 +35,49 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }))
- 
+
 
 const UserProfile = () => {
+  /*
+  유저 정보를 보여주고 수정 할 수 있다.
+  */
   const classes = useStyles()
-    // const [userid, setUserid] = useState()
-    
   const [password, setPassword] = useState()
   const [fname, setFname] = useState()
   const [lname, setLname] = useState()
-  // const [email, setEmail] = useState()
   const [age, setAge] = useState()
   const [gender, setGender] = useState()
-
   const edit = (id) => {
+    // 수정을 가능 하게 만들어 준다.
     document.getElementById(id).disabled = false
   }
 
-
-
-  const [data, setData] = useState([])
-
-  // const fetchOneUser = useCallback(async () => {
-  //   const u_id = sessionStorage.getItem('sessionUser')
-  //     try {
-  //         console.log(`Search Id is ${u_id}`) 
-  //         const req = {
-  //             method: c.get,
-  //             url: `${c.url}/api/user/${u_id}`,
-  //             auth: c.auth
-  //         }
-  //         const res = await axios(req)
-         
-  //     } catch (error) {
-  //         console.log(`Error ${error}`) 
-  //         alert('failed')
-  //     }
-  // }) // 혹시 안되면 ) 전에 [] 더할것
- const fetchOneUser = () => {
+const [data, setData] = useState([])
+const fetchOneUser = () => {
+  /*
+  로그인 된 유저 정보를 불러온다. 
+  */
   const u_id = sessionStorage.getItem('sessionUser')
   axios.get(`http://localhost:8080/api/user/${u_id}`)
-  .then(res=>{
-    setFname(res.data['fname'])
-    setAge(res.data['age'])
-    setPassword(res.data['password'])
-    setLname(res.data['lname'])
-    // setEmail(res.data['email'])
-    setAge(res.data['age'])
-    setGender(res.data['gender'])
-    setData(res.data)
-    
-  })
-  .catch( e => {alert(`Search failed`) })
-  }
+    .then(res=>{
+      setFname(res.data['fname'])
+      setAge(res.data['age'])
+      setPassword(res.data['password'])
+      setLname(res.data['lname'])
+      // setEmail(res.data['email'])
+      setAge(res.data['age'])
+      setGender(res.data['gender'])
+      setData(res.data)
+    })
+    .catch( e => {alert(`Search failed`) 
+    }
+  )
+}
 
   useEffect(() => {fetchOneUser()},[])
-  const editConfirm = e => {
 
+  const editConfirm = e => {
+    // 유저 정보를 수정한다
     e.preventDefault()
     const u_id = sessionStorage.getItem('sessionUser')
     axios.put(`http://localhost:8080/api/user/${u_id}`, {
@@ -110,6 +96,7 @@ const UserProfile = () => {
 }
   const history = useHistory()
   const deleteConfirm = useCallback(async () => {
+    // 해당 유저를 삭제 한다
     const u_id = sessionStorage.getItem('sessionUser')
     try {
       const req = {
@@ -126,9 +113,7 @@ const UserProfile = () => {
     }
   })
   
-    return <>
-    
-
+  return (<>
     <Container component="main" >
 
       <CssBaseline />
@@ -315,6 +300,6 @@ const UserProfile = () => {
       <Box mt={5}>
       </Box>
     </Container>
-    </>
+  </>)
 }
 export default UserProfile

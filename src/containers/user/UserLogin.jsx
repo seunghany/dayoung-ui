@@ -67,22 +67,21 @@ export default function UserLogin() {
   
   const history = useHistory()
   const login = e => {
-      e.preventDefault()
-      axios.post(`http://localhost:8080/api/access`, {"user_id":user_id, "password":password})
-          .then(res => {
-              alert(`Welcome ! ${res.data["fname"]}.  ${res.data["user_id"]}'s connection is successful. ! `)
+    // 유저 로그인 한다
+    e.preventDefault()
+    axios.post(`http://localhost:8080/api/access`, {"user_id":user_id, "password":password})
+        .then(res => {
+            alert(`Welcome ! ${res.data["fname"]}.  ${res.data["user_id"]}'s connection is successful. ! `)
 
-              sessionStorage.setItem("sessionUser", res.data['user_id'])
-              
-              window.location.reload()
-              history.push("/actor")  // 여기 치는 부분으로 이동
-              
-          })
-          .catch(error => {
-              alert("Please check your ID or password.")
-              window.location.reload()
-          })
-
+            sessionStorage.setItem("sessionUser", res.data['user_id'])
+            
+            window.location.reload()
+            history.push("/actor")  // 여기 치는 부분으로 이동
+        })
+        .catch(error => {
+            alert("Please check your ID or password.")
+            window.location.reload()
+        })
   }
   return (
     <Grid container component="main" className={classes.root}>

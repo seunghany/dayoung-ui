@@ -69,26 +69,33 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function ActorQuizSingle() {
-    const history = useHistory()
-    const backToList = () => {
-        history.push("./actorquiz")
-    }
-    const classes = useStyles()
-    const [data, setData] = useState([])
-    
-    useEffect(() => {
-      const one_id = localStorage.getItem('actor_id')
-      axios.get(`http://localhost:8080/api/actor/${one_id}`)
-      .then(res=>{
-          // alert(`list Success`)
-          console.log(typeof(res.Data))
-          setData(res.data) // database 안에 있는 데이터 res.data['lname'] 이런식으로 뽑을 수 있음
-          
-      })
-      .catch( e => {alert(`Search failed`) })
-    },[])
-    
-    
+  /*
+  선택한 배우의 스무고개를 시작한다.
+  */
+  const history = useHistory()
+  const backToList = () => {
+    // 기존의 모든 배우를 볼 수 있는 화면으로 돌아간다
+    history.push("./actorquiz")
+  }
+  const classes = useStyles()
+  const [data, setData] = useState([])
+  
+  useEffect(() => {showActor()},[])
+  const showActor = () => {
+    /*
+    스무고개를 시작할 배우를 보여준다.
+    */
+    const one_id = localStorage.getItem('actor_id')
+    axios.get(`http://localhost:8080/api/actor/${one_id}`)
+    .then(res=>{
+        setData(res.data)
+    })
+    .catch(e =>{
+        alert(`list Fail`)
+        throw(e)
+    } )
+  } 
+
   return (
     <React.Fragment>
       <CssBaseline />

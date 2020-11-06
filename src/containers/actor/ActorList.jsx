@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Actor} from '../../templates'
 
-// useEffect 시작하면 바로 시작됨
+
 const ActorList = () => {
     const [data, setData] = useState([])
     useEffect((yourCallback) => {
@@ -30,8 +30,6 @@ const ActorList = () => {
         })
 
     }
-
-    
 
     // columns=['photoUrl', 'age','name','realName','religion','agency', 'spouse', 'children','debutYear','actorid']
     return (<Actor>
