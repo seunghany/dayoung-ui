@@ -85,7 +85,7 @@ export default function ActorQuizSingle() {
     /*
     스무고개를 시작할 배우를 보여준다.
     */
-    const one_id = localStorage.getItem('actor_id')
+    const one_id = localStorage.getItem('act_id')
     axios.get(`http://localhost:8080/api/actor/${one_id}`)
     .then(res=>{
         setData(res.data)

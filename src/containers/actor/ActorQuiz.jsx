@@ -81,7 +81,7 @@ export default function ActorQuiz() {
     /*
     해당 배우의 ID 를 받아서 퀴즈 시작 페이지로 보내준다.
     */
-    localStorage.setItem("actor_id", id)
+    localStorage.setItem("act_id", id)
     history.push('/actorquizsingle')
   }
   
@@ -195,10 +195,10 @@ export default function ActorQuiz() {
                   </CardContent>
                   
                   <CardActions>
-                    <Button size="small" color="primary" actorid={i.actor_id} onClick={e => selectActor(i.actor_id)} >
-                      View {i.actor_id}
+                    <Button size="small" color="primary" actorid={i.act_id} onClick={e => selectActor(i.act_id)} >
+                      View {i.act_id}
                     </Button>
-                    <Button size="small" color="primary" onClick={e => deleteActor(i.actor_id)}>
+                    <Button size="small" color="primary" onClick={e => deleteActor(i.act_id)}>
                       Delete
                     </Button>
                   </CardActions>

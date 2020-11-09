@@ -62,18 +62,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserLogin() {
   const classes = useStyles()
-  const [user_id, setUserid] = useState('')
+  const [usr_id, setUsr_id] = useState('')
   const [password, setPassword] = useState('')
   
   const history = useHistory()
   const login = e => {
     // 유저 로그인 한다
     e.preventDefault()
-    axios.post(`http://localhost:8080/api/access`, {"user_id":user_id, "password":password})
+    axios.post(`http://localhost:8080/api/access`, {"usr_id":usr_id, "password":password})
         .then(res => {
-            alert(`Welcome ! ${res.data["fname"]}.  ${res.data["user_id"]}'s connection is successful. ! `)
+            alert(`Welcome ! ${res.data["fname"]}.  ${res.data["usr_id"]}'s connection is successful. ! `)
 
-            sessionStorage.setItem("sessionUser", res.data['user_id'])
+            sessionStorage.setItem("sessionUser", res.data['usr_id'])
             
             window.location.reload()
             history.push("/actor")  // 여기 치는 부분으로 이동
@@ -106,7 +106,7 @@ export default function UserLogin() {
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={e => setUserid(`${e.target.value}`)}
+              onChange={e => setUsr_id(`${e.target.value}`)}
             />
             <TextField
               variant="outlined"
