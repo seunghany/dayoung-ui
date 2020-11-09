@@ -17,7 +17,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
 // import Link from 'react-router-dom'
-import Chatbot from '../chatbot/components/Chatbot'
+import Chatbot from '../chatbot/Chatbot'
 
 function Copyright() {
   return (
@@ -163,9 +163,10 @@ export default function ActorQuizSingle() {
                   </CardActions>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={8} style={{"border": "1px solid black"}} >
+              <Grid item xs={12} sm={8}  > 
+                {/* style={{"border": "1px solid black"}} */}
                 {/* 여기 chatbot 들어갈 거임 */}
-                여기 쳇봇 들어갈 거임
+                <Chatbot/>
                 {/* <Chatbot/> */}
               </Grid>
           </Grid>
