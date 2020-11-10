@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { Home, User, Actor } from './templates'
 import {UserLogin, UserRegister, UserList, UserSearch, UserProfile} from './containers/user'
 import {ActorHome, ActorQuiz, ActorList,ActorQuizSingle} from './containers/actor'
-import {Chatbot} from './containers/chatbot'
+import {MyChatbot} from './containers/chatbot'
 
 // react -> redux -> thunk -> saga -> Mobx
 export default function App(){
@@ -25,7 +25,7 @@ export default function App(){
       <Route path ='/actorquiz' component={ActorQuiz}/>
       <Route path ='/actorquizsingle' component={ActorQuizSingle}/>
       <Route path ='/userprofile' component={UserProfile}/>
-      <Route path ='/chatbot' component={Chatbot}/>
+      <Route path ='/chatbot' component={MyChatbot}/>
 
     </Switch>
 
