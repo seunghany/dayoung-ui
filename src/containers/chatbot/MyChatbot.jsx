@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
 import ChatBot from 'react-simple-chatbot';
 import axios from 'axios';
@@ -79,46 +79,48 @@ Review.defaultProps = {
 };
 
 class Answer extends Component {
+  
   constructor(props) {
     super(props);
 
     this.state = {
-      name: '',
-      gender: '',
-      age: '',
-      religion: '',
-      agency: '',
-      children: '',
-      debut: '',
+      target_name: ''
     };
   }
 
   componentWillMount() {
     const { steps } = this.props;
     const { gender, age, name, religion, agency,children,spouse,debut } = steps;
-    this.setState({ gender, age, name, religion, agency,spouse,children,debut });
-  }
+    
 
-  render() {
     // ['age', 'real_name', 'religion', 'agency', 'spouse', 'children','debut_year', 'gender', 'state'])
-    // const { gender, age, name, religion, agency, spouse, children, debut  } = this.state;
-    // axios.get(`http://localhost:8080/api/access`,
-    // {"age":age, "real_name":name, "religion":religion,"agency":agency,"spouse":spouse,"children":children, "debut":debut,"gender":gender})
-    // .then(res=>{
-    //   alert("배우 완료")
-    //   window.location.reload()
-    // })
-    // .catch(e => {
-    //   alert('Database 에 없는 배우 입니다.')
-    // })
+    
+    axios.post(`http://localhost:8080/api/chatbot`,
+
+    // {"age":50, "real_name":1, "religion":1,"agency":1,"spouse":1,"children":1, "debut":1991,"gender":1})
+    {"age":age, "real_name":name, "religion":religion,"agency":agency,"spouse":spouse,"children":children, "debut":debut,"gender":gender})
+    .then(res=>{
+      alert("분석 성공")
+      //this.setState(res.data)
+      this.state.target_name = res.data
+      alert(this.state.target_name)
+    }) 
+    .catch(e => {
+      alert('분석 실패')
+    })
+    
+  }
   
+  render() {
+    const {target_name} = this.state;
+    console.log(target_name)
     return (
       <div style={{ width: '100%' }}>
-        <h3>Summary</h3>
+        <h3> {target_name} 입니다</h3>
       </div>
     );
   }
-}
+} 
 
 Answer.propTypes = {
   steps: PropTypes.object,
